@@ -24,6 +24,9 @@ class UrlController extends Controller
 
     public function shortener(Request $request)
     {
+        $request->validate([
+            'url' => 'required|url',
+            ]);
         $url = UrlShort::where('url', $request->url)->first();
 
         if (is_null($url)) {

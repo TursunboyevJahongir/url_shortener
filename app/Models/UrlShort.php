@@ -13,13 +13,6 @@ class UrlShort extends Model
      */
     protected $fillable = ['url', 'short', 'created_at', 'updated_at'];
 
-
-    public static function getOneViaLang($id, $lang)
-    {
-        $News = self::where('id', $id)->where('lang', $lang)->with('file')->first();
-        return $News;
-    }
-
     public static function generetShortUrl()
     {
         $short = substr(md5(sha1(time() + rand(0, time()))), 0, 6);
